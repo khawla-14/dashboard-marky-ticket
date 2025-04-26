@@ -1,30 +1,45 @@
-# Recreate UI from Screenshot
+# 🚌 MarkyTicket Dashboard - Admin Panel
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern, responsive dashboard for managing **bus ticket reservations** in the **MarkyTicket** application — a digital platform designed to simplify public bus bookings in Béjaïa and beyond.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/zahikhawla14-gmailcoms-projects/v0-recreate-ui-from-screenshot)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/R9xk7c69d37)
+## ✨ Overview
 
-## Overview
+This dashboard serves as the **admin panel** for the MarkyTicket app. It provides a clean and user-friendly interface for managing:
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- 🚌 Bus lines and schedules
+- 📍 Departure and arrival points
+- 🎫 Ticket reservations and availability
+- 👥 Passenger and staff management
+- 📊 Real-time stats and reports
 
-## Deployment
+This project was built using **Next.js** and **Tailwind CSS**, and integrates with the backend logic (via API routes or external services). The initial layout and components were designed and customized to fit the needs of this specific project.
 
-Your project is live at:
+## 🚀 Deployment
 
-**[https://vercel.com/zahikhawla14-gmailcoms-projects/v0-recreate-ui-from-screenshot](https://vercel.com/zahikhawla14-gmailcoms-projects/v0-recreate-ui-from-screenshot)**
+The project is deployed and continuously updated via Vercel.
 
-## Build your app
+🔗 **Live Dashboard**: [View Deployment on Vercel](https://vercel.com/zahikhawla14-gmailcoms-projects/v0-recreate-ui-from-screenshot)
 
-Continue building your app on:
+## 🛠️ Tech Stack
 
-**[https://v0.dev/chat/projects/R9xk7c69d37](https://v0.dev/chat/projects/R9xk7c69d37)**
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-## How It Works
+## 🧩 Features in Progress
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- ✅ Admin login (basic auth)
+- ✅ Filter and sort tickets by date, name, or tag
+- ✅ Real-time availability per bus
+- ✅ Assigning staff to buses
+- ✅ Export reports as PDF or Excel
+- ✅ Notification system by admin for clients adn stuff
+
+## 🤝 Contributing
+
+Feel free to fork this repo or submit pull requests! For major changes, please open an issue first.
+
+---
+
+Built with 💻 by **Khawla Zahi**  
+Contact: [zahikhawla14@gmail.com](mailto:zahikhawla14@gmail.com)
