@@ -39,7 +39,3 @@ The project is deployed and continuously updated via Vercel.
 
 Feel free to fork this repo or submit pull requests! For major changes, please open an issue first.
 
----
-
-Built with 💻 by **Khawla Zahi**  
-Contact: [zahikhawla14@gmail.com](mailto:zahikhawla14@gmail.com)
