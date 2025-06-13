@@ -42,55 +42,55 @@ export function ClientsTab() {
   const [clients, setClients] = useState([
     {
       id: 1,
-      username: "jean.dupont",
-      email: "jean.dupont@example.com",
-      phone: "06 12 34 56 78",
-      walletBalance: 45.5,
-      totalSpent: 235.75,
+      username: "karim.benali",
+      email: "karim.benali@example.com",
+      phone: "0555 12 34 56",
+      walletBalance: 15,
+      totalSpent: 75,
       ticketsValidated: 12,
       ticketsPending: 2,
       registrationDate: "2023-01-15",
     },
     {
       id: 2,
-      username: "marie.martin",
-      email: "marie.martin@example.com",
-      phone: "07 23 45 67 89",
-      walletBalance: 12.25,
-      totalSpent: 178.5,
+      username: "amina.meziane",
+      email: "amina.meziane@example.com",
+      phone: "0555 23 45 67",
+      walletBalance: 15,
+      totalSpent: 60,
       ticketsValidated: 8,
       ticketsPending: 1,
       registrationDate: "2023-02-03",
     },
     {
       id: 3,
-      username: "pierre.durand",
-      email: "pierre.durand@example.com",
-      phone: "06 34 56 78 90",
+      username: "yacine.hamidi",
+      email: "yacine.hamidi@example.com",
+      phone: "0555 34 56 78",
       walletBalance: 0,
-      totalSpent: 320.0,
+      totalSpent: 90,
       ticketsValidated: 15,
       ticketsPending: 0,
       registrationDate: "2023-01-20",
     },
     {
       id: 4,
-      username: "sophie.petit",
-      email: "sophie.petit@example.com",
-      phone: "07 45 67 89 01",
-      walletBalance: 78.3,
-      totalSpent: 145.25,
+      username: "souad.boudjemaa",
+      email: "souad.boudjemaa@example.com",
+      phone: "0555 45 67 89",
+      walletBalance: 15,
+      totalSpent: 45,
       ticketsValidated: 7,
       ticketsPending: 3,
       registrationDate: "2023-02-18",
     },
     {
       id: 5,
-      username: "thomas.bernard",
-      email: "thomas.bernard@example.com",
-      phone: "06 56 78 90 12",
-      walletBalance: 25.75,
-      totalSpent: 210.5,
+      username: "mohamed.khelifi",
+      email: "mohamed.khelifi@example.com",
+      phone: "0555 56 78 90",
+      walletBalance: 15,
+      totalSpent: 60,
       ticketsValidated: 10,
       ticketsPending: 1,
       registrationDate: "2023-01-25",
@@ -104,8 +104,8 @@ export function ClientsTab() {
     if (!username.trim() || !email.trim() || !password.trim()) {
       toast({
         variant: "destructive",
-        title: "Erreur",
-        description: "Veuillez remplir tous les champs obligatoires",
+        title: "Error",
+        description: "Please fill in all required fields",
       })
       return
     }
@@ -136,8 +136,8 @@ export function ClientsTab() {
 
     // Show success toast
     toast({
-      title: "Client ajouté",
-      description: "Le client a été ajouté avec succès",
+      title: "Client Added",
+      description: "The client has been successfully added",
     })
   }
 
@@ -145,22 +145,22 @@ export function ClientsTab() {
     setClients(clients.filter((client) => client.id !== id))
 
     toast({
-      title: "Client supprimé",
-      description: "Le client a été supprimé avec succès",
+      title: "Client Deleted",
+      description: "The client has been successfully deleted",
     })
   }
 
   const handleExport = () => {
     const dataToExport = clients.map((client) => ({
       ID: client.id,
-      "Nom d'utilisateur": client.username,
+      Username: client.username,
       Email: client.email,
-      Téléphone: client.phone,
-      "Solde portefeuille": client.walletBalance,
-      "Total dépensé": client.totalSpent,
-      "Tickets validés": client.ticketsValidated,
-      "Tickets en attente": client.ticketsPending,
-      "Date d'inscription": client.registrationDate,
+      Phone: client.phone,
+      "Wallet Balance": `${client.walletBalance} DZA`,
+      "Total Spent": `${client.totalSpent} DZA`,
+      "Validated Tickets": client.ticketsValidated,
+      "Pending Tickets": client.ticketsPending,
+      "Registration Date": client.registrationDate,
     }))
 
     exportToExcel(dataToExport, "clients")
@@ -173,29 +173,29 @@ export function ClientsTab() {
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={handleExport}>
             <Download className="mr-2 h-4 w-4" />
-            Exporter
+            Export
           </Button>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button>
                 <Plus className="mr-2 h-4 w-4" />
-                Ajouter un client
+                Add Client
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px]">
               <form onSubmit={handleAddClient}>
                 <DialogHeader>
-                  <DialogTitle>Ajouter un nouveau client</DialogTitle>
-                  <DialogDescription>Créez un nouveau compte client pour l'application.</DialogDescription>
+                  <DialogTitle>Add New Client</DialogTitle>
+                  <DialogDescription>Create a new client account for the application.</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   <div className="grid gap-2">
-                    <Label htmlFor="username">Nom d'utilisateur</Label>
+                    <Label htmlFor="username">Username</Label>
                     <Input
                       id="username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder="jean.dupont"
+                      placeholder="karim.benali"
                       required
                     />
                   </div>
@@ -206,12 +206,12 @@ export function ClientsTab() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="jean.dupont@example.com"
+                      placeholder="karim.benali@example.com"
                       required
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="password">Mot de passe</Label>
+                    <Label htmlFor="password">Password</Label>
                     <Input
                       id="password"
                       type="password"
@@ -221,17 +221,17 @@ export function ClientsTab() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="phone">Téléphone</Label>
+                    <Label htmlFor="phone">Phone</Label>
                     <Input
                       id="phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="06 12 34 56 78"
+                      placeholder="0555 12 34 56"
                     />
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button type="submit">Ajouter</Button>
+                  <Button type="submit">Add</Button>
                 </DialogFooter>
               </form>
             </DialogContent>
@@ -242,34 +242,34 @@ export function ClientsTab() {
       <div className="grid gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Aperçu des clients</CardTitle>
-            <CardDescription>Statistiques sur les clients de l'application</CardDescription>
+            <CardTitle>Clients Overview</CardTitle>
+            <CardDescription>Statistics on application clients</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="flex flex-col items-center justify-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                 <User className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-2" />
                 <div className="text-2xl font-bold">{clients.length}</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Clients inscrits</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total Clients</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <CreditCard className="h-8 w-8 text-green-600 dark:text-green-400 mb-2" />
                 <div className="text-2xl font-bold">
-                  {clients.reduce((sum, client) => sum + client.walletBalance, 0).toFixed(2)} €
+                  {clients.reduce((sum, client) => sum + client.ticketsValidated, 0)}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Total dans les portefeuilles</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Validated Tickets</p>
+              </div>
+              <div className="flex flex-col items-center justify-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                <div className="text-2xl font-bold">
+                  {clients.reduce((sum, client) => sum + client.ticketsPending, 0)}
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Pending Tickets</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                 <div className="text-2xl font-bold">
-                  {clients.reduce((sum, client) => sum + client.totalSpent, 0).toFixed(2)} €
+                  {clients.reduce((sum, client) => sum + client.totalSpent, 0)} DZA
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Total dépensé</p>
-              </div>
-              <div className="flex flex-col items-center justify-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                <div className="text-2xl font-bold">
-                  {clients.reduce((sum, client) => sum + client.ticketsValidated, 0)}
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Tickets validés</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total Revenue</p>
               </div>
             </div>
           </CardContent>
@@ -278,25 +278,26 @@ export function ClientsTab() {
         <Card>
           <CardHeader className="flex flex-row items-center">
             <div className="flex-1">
-              <CardTitle>Liste des clients</CardTitle>
-              <CardDescription>Gérez les comptes clients de l'application</CardDescription>
+              <CardTitle>Client List</CardTitle>
+              <CardDescription>Manage application clients</CardDescription>
             </div>
             <div className="relative w-64">
               <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-              <Input placeholder="Rechercher..." className="pl-8" />
+              <Input placeholder="Search..." className="pl-8" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
               <div className="grid grid-cols-12 border-b px-4 py-3 font-medium">
-                <div className="col-span-2">Nom d'utilisateur</div>
+                <div className="col-span-1">ID</div>
+                <div className="col-span-2">Username</div>
                 <div className="col-span-2">Email</div>
-                <div className="col-span-2">Téléphone</div>
-                <div className="col-span-1">Solde</div>
-                <div className="col-span-1">Dépensé</div>
-                <div className="col-span-1">Validés</div>
-                <div className="col-span-1">En attente</div>
-                <div className="col-span-1">Inscription</div>
+                <div className="col-span-1">Phone</div>
+                <div className="col-span-1">Balance</div>
+                <div className="col-span-1">Spent</div>
+                <div className="col-span-1">Validated</div>
+                <div className="col-span-1">Pending</div>
+                <div className="col-span-1">Registered</div>
                 <div className="col-span-1">Actions</div>
               </div>
               {clients.map((client) => (
@@ -304,14 +305,15 @@ export function ClientsTab() {
                   key={client.id}
                   className="grid grid-cols-12 border-b px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <div className="col-span-2 font-medium">{client.username}</div>
+                  <div className="col-span-1 font-medium">{client.id}</div>
+                  <div className="col-span-2">{client.username}</div>
                   <div className="col-span-2">{client.email}</div>
-                  <div className="col-span-2">{client.phone}</div>
-                  <div className="col-span-1">{client.walletBalance.toFixed(2)} €</div>
-                  <div className="col-span-1">{client.totalSpent.toFixed(2)} €</div>
+                  <div className="col-span-1">{client.phone}</div>
+                  <div className="col-span-1">{client.walletBalance} DZA</div>
+                  <div className="col-span-1">{client.totalSpent} DZA</div>
                   <div className="col-span-1">{client.ticketsValidated}</div>
                   <div className="col-span-1">{client.ticketsPending}</div>
-                  <div className="col-span-1">{new Date(client.registrationDate).toLocaleDateString("fr-FR")}</div>
+                  <div className="col-span-1">{client.registrationDate}</div>
                   <div className="col-span-1">
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
@@ -321,19 +323,18 @@ export function ClientsTab() {
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle>Êtes-vous sûr ?</AlertDialogTitle>
+                          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                           <AlertDialogDescription>
-                            Cette action ne peut pas être annulée. Cela supprimera définitivement le compte client et
-                            toutes les données associées.
+                            This action cannot be undone. This will permanently delete the client and all associated data.
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel>Annuler</AlertDialogCancel>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
                           <AlertDialogAction
                             onClick={() => handleDeleteClient(client.id)}
                             className="bg-red-500 hover:bg-red-600"
                           >
-                            Supprimer
+                            Delete
                           </AlertDialogAction>
                         </AlertDialogFooter>
                       </AlertDialogContent>

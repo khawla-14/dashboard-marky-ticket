@@ -26,13 +26,13 @@ export function OverviewTab() {
   ]
 
   const weeklyData = [
-    { date: "Lun", tickets: 65 },
-    { date: "Mar", tickets: 59 },
-    { date: "Mer", tickets: 80 },
-    { date: "Jeu", tickets: 81 },
-    { date: "Ven", tickets: 95 },
-    { date: "Sam", tickets: 110 },
-    { date: "Dim", tickets: 85 },
+    { date: "Mon", tickets: 65 },
+    { date: "Tue", tickets: 59 },
+    { date: "Wed", tickets: 80 },
+    { date: "Thu", tickets: 81 },
+    { date: "Fri", tickets: 95 },
+    { date: "Sat", tickets: 110 },
+    { date: "Sun", tickets: 85 },
   ]
 
   const monthlyData = [
@@ -47,23 +47,23 @@ export function OverviewTab() {
 
   const yearlyData = [
     { date: "Jan", tickets: 1200 },
-    { date: "Fév", tickets: 1100 },
+    { date: "Feb", tickets: 1100 },
     { date: "Mar", tickets: 1300 },
-    { date: "Avr", tickets: 1400 },
-    { date: "Mai", tickets: 1500 },
-    { date: "Juin", tickets: 1700 },
-    { date: "Juil", tickets: 1800 },
-    { date: "Août", tickets: 1600 },
+    { date: "Apr", tickets: 1400 },
+    { date: "May", tickets: 1500 },
+    { date: "Jun", tickets: 1700 },
+    { date: "Jul", tickets: 1800 },
+    { date: "Aug", tickets: 1600 },
     { date: "Sep", tickets: 1400 },
     { date: "Oct", tickets: 1300 },
     { date: "Nov", tickets: 1500 },
-    { date: "Déc", tickets: 1700 },
+    { date: "Dec", tickets: 1700 },
   ]
 
   // Distribution data
   const ticketDistribution = [
-    { name: "En ligne", value: 65 },
-    { name: "Sur place", value: 35 },
+    { name: "Online", value: 65 },
+    { name: "On-site", value: 35 },
   ]
 
   useEffect(() => {
@@ -92,56 +92,56 @@ export function OverviewTab() {
     {
       title: "Total Clients",
       value: "1,248",
-      description: "+12% depuis le mois dernier",
+      description: "+12% from last month",
       icon: <Users className="h-5 w-5 text-blue-600" />,
       link: "clients",
     },
     {
       title: "Total Tickets",
       value: "8,492",
-      description: "+18% depuis le mois dernier",
+      description: "+18% from last month",
       icon: <CreditCard className="h-5 w-5 text-purple-600" />,
       link: "tickets",
     },
     {
-      title: "Total Receveurs",
+      title: "Total Collectors",
       value: "42",
-      description: "+3 depuis le mois dernier",
+      description: "+3 from last month",
       icon: <Users className="h-5 w-5 text-green-600" />,
       link: "receveurs",
     },
     {
-      title: "Total Bus",
+      title: "Total Buses",
       value: "28",
-      description: "+2 depuis le mois dernier",
+      description: "+2 from last month",
       icon: <Bus className="h-5 w-5 text-orange-600" />,
       link: "busses",
     },
     {
-      title: "Total Trajets",
+      title: "Total Routes",
       value: "64",
-      description: "+5 depuis le mois dernier",
+      description: "+5 from last month",
       icon: <Map className="h-5 w-5 text-red-600" />,
       link: "trajets",
     },
     {
       title: "Total Feedbacks",
       value: "3,842",
-      description: "+24% depuis le mois dernier",
+      description: "+24% from last month",
       icon: <MessageSquare className="h-5 w-5 text-yellow-600" />,
       link: "feedbacks",
     },
     {
-      title: "Revenus",
-      value: "124,582 €",
-      description: "+8% depuis le mois dernier",
+      title: "Revenue",
+      value: "124,582 DZA",
+      description: "+8% from last month",
       icon: <FileText className="h-5 w-5 text-emerald-600" />,
       link: "finance",
     },
     {
       title: "Notifications",
       value: "86",
-      description: "Envoyées ce mois-ci",
+      description: "Sent this month",
       icon: <Bell className="h-5 w-5 text-indigo-600" />,
       link: "notifications",
     },
@@ -149,28 +149,28 @@ export function OverviewTab() {
 
   const handleExport = () => {
     const dataToExport = stats.map((stat) => ({
-      Titre: stat.title,
-      Valeur: stat.value,
+      Title: stat.title,
+      Value: stat.value,
       Description: stat.description,
     }))
 
-    exportToExcel(dataToExport, `statistiques-${timeframe}`)
+    exportToExcel(dataToExport, `statistics-${timeframe}`)
   }
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold tracking-tight dark:text-white">Vue d'ensemble</h2>
+        <h2 className="text-3xl font-bold tracking-tight dark:text-white">Overview</h2>
         <div className="flex gap-4">
           <Button variant="outline" onClick={handleExport}>
-            Exporter les statistiques
+            Export Statistics
           </Button>
           <Tabs defaultValue={timeframe} onValueChange={setTimeframe} className="w-[400px]">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="today">Aujourd'hui</TabsTrigger>
-              <TabsTrigger value="week">Semaine</TabsTrigger>
-              <TabsTrigger value="month">Mois</TabsTrigger>
-              <TabsTrigger value="year">Année</TabsTrigger>
+              <TabsTrigger value="today">Today</TabsTrigger>
+              <TabsTrigger value="week">Week</TabsTrigger>
+              <TabsTrigger value="month">Month</TabsTrigger>
+              <TabsTrigger value="year">Year</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
@@ -209,12 +209,12 @@ export function OverviewTab() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         <Card className="col-span-4">
           <CardHeader>
-            <CardTitle>Ventes de tickets</CardTitle>
+            <CardTitle>Ticket Sales</CardTitle>
             <CardDescription>
-              {timeframe === "today" && "Nombre de tickets vendus aujourd'hui"}
-              {timeframe === "week" && "Nombre de tickets vendus cette semaine"}
-              {timeframe === "month" && "Nombre de tickets vendus ce mois-ci"}
-              {timeframe === "year" && "Nombre de tickets vendus cette année"}
+              {timeframe === "today" && "Number of tickets sold today"}
+              {timeframe === "week" && "Number of tickets sold this week"}
+              {timeframe === "month" && "Number of tickets sold this month"}
+              {timeframe === "year" && "Number of tickets sold this year"}
             </CardDescription>
           </CardHeader>
           <CardContent className="pl-2">

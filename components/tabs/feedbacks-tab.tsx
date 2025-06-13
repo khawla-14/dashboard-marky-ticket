@@ -8,46 +8,46 @@ export function FeedbacksTab() {
   const feedbacks = [
     {
       id: 1,
-      client: "Jean Dupont",
-      trajet: "Paris - Lyon",
-      title: "Voyage agréable",
-      content: "Le chauffeur était très professionnel et le bus confortable. Je recommande !",
+      client: "Ahmed Benali",
+      trajet: "Bejaia Center - Oued Ghir",
+      title: "Pleasant Journey",
+      content: "The driver was very professional and the bus was comfortable. I recommend!",
       rating: 5,
       date: "2023-04-15T14:30:00",
     },
     {
       id: 2,
-      client: "Marie Martin",
-      trajet: "Marseille - Nice",
-      title: "Bon service",
-      content: "Trajet sans problème, bus propre et à l'heure.",
+      client: "Fatima Meziane",
+      trajet: "Bejaia Center - Tichy",
+      title: "Good Service",
+      content: "Smooth journey, clean bus and on time.",
       rating: 4,
       date: "2023-04-14T10:15:00",
     },
     {
       id: 3,
-      client: "Pierre Durand",
-      trajet: "Bordeaux - Toulouse",
-      title: "Retard important",
-      content: "Le bus avait 30 minutes de retard au départ. Service correct sinon.",
+      client: "Karim Hamidi",
+      trajet: "Bejaia Center - Kherrata",
+      title: "Significant Delay",
+      content: "The bus was 30 minutes late at departure. Otherwise good service.",
       rating: 3,
       date: "2023-04-13T18:45:00",
     },
     {
       id: 4,
-      client: "Sophie Petit",
-      trajet: "Lille - Paris",
-      title: "Très satisfaite",
-      content: "Excellent service, personnel aimable et trajet confortable.",
+      client: "Samira Boudjemaa",
+      trajet: "Bejaia Center - Akbou",
+      title: "Very Satisfied",
+      content: "Excellent service, friendly staff and comfortable journey.",
       rating: 5,
       date: "2023-04-12T09:20:00",
     },
     {
       id: 5,
-      client: "Thomas Bernard",
-      trajet: "Lyon - Grenoble",
-      title: "Problème de climatisation",
-      content: "La climatisation ne fonctionnait pas correctement. Voyage inconfortable par temps chaud.",
+      client: "Mohamed Khelifi",
+      trajet: "Bejaia Center - El Kseur",
+      title: "Air Conditioning Issue",
+      content: "The air conditioning was not working properly. Uncomfortable journey in hot weather.",
       rating: 2,
       date: "2023-04-11T16:10:00",
     },
@@ -69,15 +69,15 @@ export function FeedbacksTab() {
         <h2 className="text-3xl font-bold tracking-tight dark:text-white">Feedbacks</h2>
         <Button variant="outline">
           <Download className="mr-2 h-4 w-4" />
-          Exporter
+          Export
         </Button>
       </div>
 
       <div className="grid gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Aperçu des feedbacks</CardTitle>
-            <CardDescription>Statistiques sur les avis des clients</CardDescription>
+            <CardTitle>Feedback Overview</CardTitle>
+            <CardDescription>Customer feedback statistics</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -91,7 +91,7 @@ export function FeedbacksTab() {
                     />
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Note moyenne sur {feedbacks.length} avis</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Average rating from {feedbacks.length} reviews</p>
               </div>
 
               <div className="space-y-2">
@@ -121,12 +121,12 @@ export function FeedbacksTab() {
         <Card>
           <CardHeader className="flex flex-row items-center">
             <div className="flex-1">
-              <CardTitle>Liste des feedbacks</CardTitle>
-              <CardDescription>Avis des clients sur les trajets</CardDescription>
+              <CardTitle>Feedback List</CardTitle>
+              <CardDescription>Customer reviews for routes</CardDescription>
             </div>
             <div className="relative w-64">
               <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-              <Input placeholder="Rechercher..." className="pl-8" />
+              <Input placeholder="Search..." className="pl-8" />
             </div>
           </CardHeader>
           <CardContent>
@@ -139,7 +139,7 @@ export function FeedbacksTab() {
                         <CardTitle className="text-base">{feedback.title}</CardTitle>
                         <CardDescription>
                           {feedback.client} • {feedback.trajet} •{" "}
-                          {new Date(feedback.date).toLocaleDateString("fr-FR", {
+                          {new Date(feedback.date).toLocaleDateString("en-US", {
                             day: "2-digit",
                             month: "2-digit",
                             year: "numeric",

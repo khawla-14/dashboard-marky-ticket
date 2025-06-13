@@ -43,11 +43,11 @@ export function BussesTab() {
   const { toast } = useToast()
 
   const trajets = [
-    { id: "T-1001", name: "Paris - Lyon" },
-    { id: "T-1002", name: "Marseille - Nice" },
-    { id: "T-1003", name: "Bordeaux - Toulouse" },
-    { id: "T-1004", name: "Lille - Paris" },
-    { id: "T-1005", name: "Lyon - Grenoble" },
+    { id: "T-1001", name: "Bejaia Center - Oued Ghir" },
+    { id: "T-1002", name: "Bejaia Center - Tichy" },
+    { id: "T-1003", name: "Bejaia Center - Kherrata" },
+    { id: "T-1004", name: "Bejaia Center - Akbou" },
+    { id: "T-1005", name: "Bejaia Center - El Kseur" },
   ]
 
   const [busses, setBusses] = useState([
@@ -57,7 +57,7 @@ export function BussesTab() {
       model: "Mercedes Tourismo",
       capacity: 50,
       trajetId: "T-1001",
-      trajetName: "Paris - Lyon",
+      trajetName: "Bejaia Center - Oued Ghir",
       status: "active",
     },
     {
@@ -66,7 +66,7 @@ export function BussesTab() {
       model: "Volvo 9700",
       capacity: 45,
       trajetId: "T-1002",
-      trajetName: "Marseille - Nice",
+      trajetName: "Bejaia Center - Tichy",
       status: "active",
     },
     {
@@ -75,7 +75,7 @@ export function BussesTab() {
       model: "Scania Touring",
       capacity: 55,
       trajetId: "T-1003",
-      trajetName: "Bordeaux - Toulouse",
+      trajetName: "Bejaia Center - Kherrata",
       status: "maintenance",
     },
     {
@@ -84,7 +84,7 @@ export function BussesTab() {
       model: "Iveco Magelys",
       capacity: 48,
       trajetId: "T-1004",
-      trajetName: "Lille - Paris",
+      trajetName: "Bejaia Center - Akbou",
       status: "active",
     },
     {
@@ -93,7 +93,7 @@ export function BussesTab() {
       model: "Setra ComfortClass",
       capacity: 52,
       trajetId: "T-1005",
-      trajetName: "Lyon - Grenoble",
+      trajetName: "Bejaia Center - El Kseur",
       status: "active",
     },
   ])
@@ -124,8 +124,8 @@ export function BussesTab() {
     if (!matricule.trim() || !model.trim() || !capacity || !trajetId) {
       toast({
         variant: "destructive",
-        title: "Erreur",
-        description: "Veuillez remplir tous les champs obligatoires",
+        title: "Error",
+        description: "Please fill in all required fields",
       })
       return
     }
@@ -150,8 +150,8 @@ export function BussesTab() {
       )
 
       toast({
-        title: "Bus modifié",
-        description: "Le bus a été modifié avec succès",
+        title: "Bus Updated",
+        description: "The bus has been successfully updated",
       })
     } else {
       // Add new bus
@@ -168,8 +168,8 @@ export function BussesTab() {
       setBusses([...busses, newBus])
 
       toast({
-        title: "Bus ajouté",
-        description: "Le bus a été ajouté avec succès",
+        title: "Bus Added",
+        description: "The bus has been successfully added",
       })
     }
 
@@ -181,8 +181,8 @@ export function BussesTab() {
     setBusses(busses.filter((bus) => bus.id !== id))
 
     toast({
-      title: "Bus supprimé",
-      description: "Le bus a été supprimé avec succès",
+      title: "Bus Deleted",
+      description: "The bus has been successfully deleted",
     })
   }
 
@@ -196,26 +196,26 @@ export function BussesTab() {
         <div className="flex items-center gap-2">
           <Button variant="outline">
             <Download className="mr-2 h-4 w-4" />
-            Exporter
+            Export
           </Button>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button onClick={() => handleOpenDialog()}>
                 <Plus className="mr-2 h-4 w-4" />
-                Ajouter un bus
+                Add Bus
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px]">
               <form onSubmit={handleSubmit}>
                 <DialogHeader>
-                  <DialogTitle>{isEditMode ? "Modifier un bus" : "Ajouter un nouveau bus"}</DialogTitle>
+                  <DialogTitle>{isEditMode ? "Edit Bus" : "Add New Bus"}</DialogTitle>
                   <DialogDescription>
-                    {isEditMode ? "Modifiez les informations du bus." : "Ajoutez un nouveau bus à la flotte."}
+                    {isEditMode ? "Edit bus information." : "Add a new bus to the fleet."}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   <div className="grid gap-2">
-                    <Label htmlFor="matricule">Matricule</Label>
+                    <Label htmlFor="matricule">License Plate</Label>
                     <Input
                       id="matricule"
                       value={matricule}
@@ -225,7 +225,7 @@ export function BussesTab() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="model">Modèle</Label>
+                    <Label htmlFor="model">Model</Label>
                     <Input
                       id="model"
                       value={model}
@@ -235,7 +235,7 @@ export function BussesTab() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="capacity">Capacité (places)</Label>
+                    <Label htmlFor="capacity">Capacity (seats)</Label>
                     <Input
                       id="capacity"
                       type="number"
@@ -246,10 +246,10 @@ export function BussesTab() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="trajet">Trajet assigné</Label>
+                    <Label htmlFor="trajet">Assigned Route</Label>
                     <Select value={trajetId} onValueChange={setTrajetId}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionner un trajet" />
+                        <SelectValue placeholder="Select a route" />
                       </SelectTrigger>
                       <SelectContent>
                         {trajets.map((trajet) => (
@@ -262,7 +262,7 @@ export function BussesTab() {
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button type="submit">{isEditMode ? "Enregistrer" : "Ajouter"}</Button>
+                  <Button type="submit">{isEditMode ? "Save" : "Add"}</Button>
                 </DialogFooter>
               </form>
             </DialogContent>
@@ -273,23 +273,23 @@ export function BussesTab() {
       <div className="grid gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Aperçu des bus</CardTitle>
-            <CardDescription>Statistiques sur la flotte de bus</CardDescription>
+            <CardTitle>Bus Overview</CardTitle>
+            <CardDescription>Statistics on the bus fleet</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex flex-col items-center justify-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                 <Bus className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-2" />
                 <div className="text-2xl font-bold">{busses.length}</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Total des bus</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total buses</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <div className="text-2xl font-bold">{activeBusses.length}</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Bus actifs</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Active buses</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
                 <div className="text-2xl font-bold">{maintenanceBusses.length}</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Bus en maintenance</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Buses in maintenance</p>
               </div>
             </div>
           </CardContent>
@@ -298,23 +298,23 @@ export function BussesTab() {
         <Card>
           <CardHeader className="flex flex-row items-center">
             <div className="flex-1">
-              <CardTitle>Liste des bus</CardTitle>
-              <CardDescription>Gérez la flotte de bus</CardDescription>
+              <CardTitle>Bus List</CardTitle>
+              <CardDescription>Manage the bus fleet</CardDescription>
             </div>
             <div className="relative w-64">
               <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-              <Input placeholder="Rechercher..." className="pl-8" />
+              <Input placeholder="Search..." className="pl-8" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
               <div className="grid grid-cols-12 border-b px-4 py-3 font-medium">
                 <div className="col-span-1">ID</div>
-                <div className="col-span-2">Matricule</div>
-                <div className="col-span-2">Modèle</div>
-                <div className="col-span-1">Capacité</div>
-                <div className="col-span-3">Trajet assigné</div>
-                <div className="col-span-2">Statut</div>
+                <div className="col-span-2">License Plate</div>
+                <div className="col-span-2">Model</div>
+                <div className="col-span-1">Capacity</div>
+                <div className="col-span-3">Assigned Route</div>
+                <div className="col-span-2">Status</div>
                 <div className="col-span-1">Actions</div>
               </div>
               {busses.map((bus) => (
@@ -325,11 +325,11 @@ export function BussesTab() {
                   <div className="col-span-1 font-medium">{bus.id}</div>
                   <div className="col-span-2">{bus.matricule}</div>
                   <div className="col-span-2">{bus.model}</div>
-                  <div className="col-span-1">{bus.capacity} places</div>
+                  <div className="col-span-1">{bus.capacity} seats</div>
                   <div className="col-span-3">{bus.trajetName}</div>
                   <div className="col-span-2">
-                    {bus.status === "active" && <Badge className="bg-green-500">Actif</Badge>}
-                    {bus.status === "maintenance" && <Badge className="bg-yellow-500">En maintenance</Badge>}
+                    {bus.status === "active" && <Badge className="bg-green-500">Active</Badge>}
+                    {bus.status === "maintenance" && <Badge className="bg-yellow-500">Maintenance</Badge>}
                   </div>
                   <div className="col-span-1">
                     <div className="flex items-center gap-1">
@@ -349,19 +349,18 @@ export function BussesTab() {
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
-                            <AlertDialogTitle>Êtes-vous sûr ?</AlertDialogTitle>
+                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                             <AlertDialogDescription>
-                              Cette action ne peut pas être annulée. Cela supprimera définitivement le bus et toutes les
-                              données associées.
+                              This action cannot be undone. This will permanently delete the bus and all associated data.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
-                            <AlertDialogCancel>Annuler</AlertDialogCancel>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
                             <AlertDialogAction
                               onClick={() => handleDeleteBus(bus.id)}
                               className="bg-red-500 hover:bg-red-600"
                             >
-                              Supprimer
+                              Delete
                             </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>

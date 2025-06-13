@@ -45,11 +45,11 @@
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
+    "next": "^15.2.4",
     "next-themes": "latest",
-    "react": "^19",
+    "react": "^19.1.0",
     "react-day-picker": "^9.0.0",
-    "react-dom": "^19",
+    "react-dom": "^19.1.0",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "latest",
@@ -57,8 +57,8 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.0.0",
-    "zod": "^3.24.1",
-    "xlsx": "specific.safe.version"
+    "xlsx": "specific.safe.version",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22",

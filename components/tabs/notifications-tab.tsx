@@ -32,41 +32,41 @@ export function NotificationsTab() {
   const [notifications, setNotifications] = useState([
     {
       id: 1,
-      title: "Mise à jour de l'application",
+      title: "Application Update",
       content:
-        "Une nouvelle version de l'application est disponible. Veuillez mettre à jour pour profiter des nouvelles fonctionnalités.",
-      recipient: "Tous",
+        "A new version of the application is available. Please update to enjoy the new features.",
+      recipient: "All",
       date: "2023-04-15T10:30:00",
       read: 1248,
     },
     {
       id: 2,
-      title: "Promotion sur les trajets Paris-Lyon",
-      content: "Profitez de 20% de réduction sur tous les trajets Paris-Lyon ce week-end!",
+      title: "Promotion on Bejaia Center - Oued Ghir Routes",
+      content: "Enjoy 20% discount on all Bejaia Center - Oued Ghir routes this weekend!",
       recipient: "Clients",
       date: "2023-04-12T14:45:00",
       read: 843,
     },
     {
       id: 3,
-      title: "Formation obligatoire",
-      content: "Une formation sur les nouvelles procédures de validation des tickets aura lieu le 20 avril.",
-      recipient: "Receveurs",
+      title: "Mandatory Training",
+      content: "A training session on new ticket validation procedures will be held on April 20th.",
+      recipient: "Collectors",
       date: "2023-04-10T09:15:00",
       read: 42,
     },
     {
       id: 4,
-      title: "Maintenance prévue",
-      content: "L'application sera en maintenance le 18 avril de 2h à 4h du matin.",
-      recipient: "Tous",
+      title: "Scheduled Maintenance",
+      content: "The application will be under maintenance on April 18th from 2 AM to 4 AM.",
+      recipient: "All",
       date: "2023-04-08T16:20:00",
       read: 1248,
     },
     {
       id: 5,
-      title: "Nouveaux trajets disponibles",
-      content: "De nouveaux trajets vers la côte d'Azur sont maintenant disponibles à la réservation.",
+      title: "New Routes Available",
+      content: "New routes to coastal destinations are now available for booking.",
       recipient: "Clients",
       date: "2023-04-05T11:10:00",
       read: 756,
@@ -80,8 +80,8 @@ export function NotificationsTab() {
     if (!title.trim() || !content.trim()) {
       toast({
         variant: "destructive",
-        title: "Erreur",
-        description: "Veuillez remplir tous les champs obligatoires",
+        title: "Error",
+        description: "Please fill in all required fields",
       })
       return
     }
@@ -91,7 +91,7 @@ export function NotificationsTab() {
       id: notifications.length + 1,
       title,
       content,
-      recipient: recipient === "all" ? "Tous" : recipient === "clients" ? "Clients" : "Receveurs",
+      recipient: recipient === "all" ? "All" : recipient === "clients" ? "Clients" : "Collectors",
       date: new Date().toISOString(),
       read: recipient === "all" ? 1248 : recipient === "clients" ? 1248 : 42,
     }
@@ -109,8 +109,8 @@ export function NotificationsTab() {
 
     // Show success toast
     toast({
-      title: "Notification envoyée",
-      description: "La notification a été envoyée avec succès",
+      title: "Notification Sent",
+      description: "The notification has been successfully sent",
     })
   }
 
@@ -122,43 +122,43 @@ export function NotificationsTab() {
           <DialogTrigger asChild>
             <Button>
               <Plus className="mr-2 h-4 w-4" />
-              Nouvelle notification
+              New Notification
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[500px]">
             <form onSubmit={handleSendNotification}>
               <DialogHeader>
-                <DialogTitle>Envoyer une notification</DialogTitle>
+                <DialogTitle>Send Notification</DialogTitle>
                 <DialogDescription>
-                  Créez une nouvelle notification pour les utilisateurs de l'application.
+                  Create a new notification for application users.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="recipient">Destinataires</Label>
+                  <Label htmlFor="recipient">Recipients</Label>
                   <Select value={recipient} onValueChange={setRecipient}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Sélectionner les destinataires" />
+                      <SelectValue placeholder="Select recipients" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Tous les utilisateurs</SelectItem>
-                      <SelectItem value="clients">Clients uniquement</SelectItem>
-                      <SelectItem value="receveurs">Receveurs uniquement</SelectItem>
+                      <SelectItem value="all">All Users</SelectItem>
+                      <SelectItem value="clients">Clients Only</SelectItem>
+                      <SelectItem value="receveurs">Collectors Only</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="title">Titre</Label>
+                  <Label htmlFor="title">Title</Label>
                   <Input
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Titre de la notification"
+                    placeholder="Notification title"
                     required
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="image">Image URL (optionnel)</Label>
+                  <Label htmlFor="image">Image URL (optional)</Label>
                   <Input
                     id="image"
                     value={imageUrl}
@@ -167,18 +167,18 @@ export function NotificationsTab() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="content">Contenu</Label>
+                  <Label htmlFor="content">Content</Label>
                   <Textarea
                     id="content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    placeholder="Contenu de la notification"
+                    placeholder="Notification content"
                     required
                   />
                 </div>
               </div>
               <DialogFooter>
-                <Button type="submit">Envoyer</Button>
+                <Button type="submit">Send</Button>
               </DialogFooter>
             </form>
           </DialogContent>
@@ -188,24 +188,24 @@ export function NotificationsTab() {
       <div className="grid gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Aperçu des notifications</CardTitle>
-            <CardDescription>Statistiques sur les notifications envoyées</CardDescription>
+            <CardTitle>Notifications Overview</CardTitle>
+            <CardDescription>Statistics on sent notifications</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex flex-col items-center justify-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                 <Bell className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-2" />
                 <div className="text-2xl font-bold">{notifications.length}</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Notifications envoyées</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Sent Notifications</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <Users className="h-8 w-8 text-green-600 dark:text-green-400 mb-2" />
                 <div className="text-2xl font-bold">1,248</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Utilisateurs atteints</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Users Reached</p>
               </div>
               <div className="flex flex-col items-center justify-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                 <div className="text-2xl font-bold">92%</div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Taux de lecture</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Read Rate</p>
               </div>
             </div>
           </CardContent>
@@ -214,21 +214,21 @@ export function NotificationsTab() {
         <Card>
           <CardHeader className="flex flex-row items-center">
             <div className="flex-1">
-              <CardTitle>Historique des notifications</CardTitle>
-              <CardDescription>Liste de toutes les notifications envoyées</CardDescription>
+              <CardTitle>Notification History</CardTitle>
+              <CardDescription>List of all sent notifications</CardDescription>
             </div>
             <div className="relative w-64">
               <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-              <Input placeholder="Rechercher..." className="pl-8" />
+              <Input placeholder="Search..." className="pl-8" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="rounded-md border">
               <div className="grid grid-cols-12 border-b px-4 py-3 font-medium">
-                <div className="col-span-4">Titre</div>
-                <div className="col-span-3">Destinataires</div>
-                <div className="col-span-2">Lectures</div>
-                <div className="col-span-3">Date d'envoi</div>
+                <div className="col-span-4">Title</div>
+                <div className="col-span-3">Recipients</div>
+                <div className="col-span-2">Reads</div>
+                <div className="col-span-3">Sent Date</div>
               </div>
               {notifications.map((notification) => (
                 <div
@@ -237,9 +237,9 @@ export function NotificationsTab() {
                 >
                   <div className="col-span-4 font-medium">{notification.title}</div>
                   <div className="col-span-3">{notification.recipient}</div>
-                  <div className="col-span-2">{notification.read} lectures</div>
+                  <div className="col-span-2">{notification.read} reads</div>
                   <div className="col-span-3 text-gray-500 dark:text-gray-400">
-                    {new Date(notification.date).toLocaleDateString("fr-FR", {
+                    {new Date(notification.date).toLocaleDateString("en-US", {
                       day: "2-digit",
                       month: "2-digit",
                       year: "numeric",

@@ -31,8 +31,8 @@ export default function Dashboard() {
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn")
     toast({
-      title: "Déconnexion réussie",
-      description: "Vous avez été déconnecté avec succès",
+      title: "Logout Successful",
+      description: "You have been successfully logged out",
     })
     router.push("/")
   }
@@ -53,13 +53,13 @@ export default function Dashboard() {
         </div>
 
         <nav className="flex-1 py-4 overflow-y-auto">
-          <div className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase">Principal</div>
+          <div className="px-4 mb-2 text-xs font-semibold text-gray-400 uppercase">Main</div>
           <button
             onClick={() => setActiveTab("overview")}
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "overview" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
           >
             <Home size={20} />
-            <span>Vue d'ensemble</span>
+            <span>Overview</span>
           </button>
           <button
             onClick={() => setActiveTab("notifications")}
@@ -69,7 +69,7 @@ export default function Dashboard() {
             <span>Notifications</span>
           </button>
 
-          <div className="px-4 mt-6 mb-2 text-xs font-semibold text-gray-400 uppercase">Gestion</div>
+          <div className="px-4 mt-6 mb-2 text-xs font-semibold text-gray-400 uppercase">Management</div>
           <button
             onClick={() => setActiveTab("clients")}
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "clients" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
@@ -89,24 +89,24 @@ export default function Dashboard() {
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "receveurs" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
           >
             <Users size={20} />
-            <span>Receveurs</span>
+            <span>Collectors</span>
           </button>
           <button
             onClick={() => setActiveTab("busses")}
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "busses" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
           >
             <Bus size={20} />
-            <span>Bus</span>
+            <span>Buses</span>
           </button>
           <button
             onClick={() => setActiveTab("trajets")}
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "trajets" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
           >
             <Map size={20} />
-            <span>Trajets</span>
+            <span>Routes</span>
           </button>
 
-          <div className="px-4 mt-6 mb-2 text-xs font-semibold text-gray-400 uppercase">Rapports</div>
+          <div className="px-4 mt-6 mb-2 text-xs font-semibold text-gray-400 uppercase">Reports</div>
           <button
             onClick={() => setActiveTab("feedbacks")}
             className={`flex items-center gap-3 px-4 py-3 w-full text-left text-white ${activeTab === "feedbacks" ? "bg-[#2d4a77] dark:bg-[#1e293b]" : "hover:bg-[#2d4a77] dark:hover:bg-[#1e293b]"}`}
@@ -127,7 +127,7 @@ export default function Dashboard() {
         <div className="p-4 border-t border-[#2d4a77] dark:border-[#1e293b]">
           <button onClick={handleLogout} className="flex items-center gap-3 text-white w-full text-left">
             <LogOut size={20} />
-            <span>Déconnexion</span>
+            <span>Logout</span>
           </button>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <header className="bg-white dark:bg-gray-800 p-4 flex items-center justify-between border-b dark:border-gray-700">
-          <h1 className="text-xl font-medium dark:text-white">Tableau de bord</h1>
+          <h1 className="text-xl font-medium dark:text-white">Dashboard</h1>
 
           <div className="flex items-center gap-4">
             <Button
